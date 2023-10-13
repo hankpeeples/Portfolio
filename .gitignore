@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 yarn.lock
+
+# rust
+backend/target
+backend/Cargo.lock
