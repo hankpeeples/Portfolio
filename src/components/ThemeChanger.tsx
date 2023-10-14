@@ -4,7 +4,7 @@ import type { Theme } from "../theme.ts";
 type Props = {
   theme: Theme;
   themes: { [key: string]: Theme };
-  onChangeTheme: Function;
+  onChangeTheme: VoidFunction;
 };
 
 const ThemeChanger = ({ theme, themes, onChangeTheme }: Props) => (
