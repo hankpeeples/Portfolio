@@ -25,6 +25,4 @@ dist-ssr
 
 yarn.lock
 
-# rust
-backend/target
-backend/Cargo.lock
+backend/go.sum
