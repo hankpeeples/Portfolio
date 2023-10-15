@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import ThemeChanger from "./ThemeChanger";
+import { type Theme } from "../theme";
 
 type Props = {
+  theme: Theme;
   themeChanger: VoidFunction;
 };
 
@@ -9,7 +11,7 @@ type NavItem = string;
 
 const NavItems: NavItem[] = ["Home", "Projects", "Blog", "Contact"];
 
-const Navbar = ({ themeChanger }: Props) => {
+const Navbar = ({ theme, themeChanger }: Props) => {
   return (
     <NavbarContainer>
       <div>
@@ -22,7 +24,7 @@ const Navbar = ({ themeChanger }: Props) => {
           </NavItemWrapper>
         );
       })}
-      <ThemeChanger onChangeTheme={themeChanger} />
+      <ThemeChanger theme={theme} onChangeTheme={themeChanger} />
     </NavbarContainer>
   );
 };
@@ -48,9 +50,9 @@ const NavbarContainer = styled.div`
 
 const NavItemWrapper = styled.div`
   cursor: pointer;
-  transition: 0.2s all ease-in-out;
 
   :hover {
     border-bottom: 1px solid ${({ theme }) => theme.primary};
+    transition: all 0.2s ease-in-out;
   }
 `;

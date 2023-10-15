@@ -21,7 +21,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Main>
-        <Navbar themeChanger={handleThemeChange} />
+        <Navbar theme={theme} themeChanger={handleThemeChange} />
       </Main>
     </ThemeProvider>
   );
