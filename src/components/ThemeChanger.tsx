@@ -8,15 +8,8 @@ type Props = {
 };
 
 const ThemeChanger = ({ theme, themes, onChangeTheme }: Props) => (
-  <div
-    style={{
-      color: theme.primary,
-      backgroundColor: theme.secondary,
-      transition: "0.3s ease-in-out",
-    }}
-    onClick={() => onChangeTheme()}
-  >
-    CHANGE THEME: {theme === themes.dark ? "dark" : "default"}
+  <div onClick={() => onChangeTheme()}>
+    {theme === themes.dark ? "dark" : "default"}
   </div>
 );
 
