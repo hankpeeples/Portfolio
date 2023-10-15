@@ -1,7 +1,7 @@
-import { ThemeProvider, themes } from "./theme.ts";
-import type { Theme } from "./theme.ts";
+import { themes, type Theme } from "./theme.ts";
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar.tsx";
+import styled, { ThemeProvider } from "styled-components";
 
 const App = () => {
   const [theme, setTheme] = useState<Theme>(themes.default);
@@ -16,20 +16,13 @@ const App = () => {
     getAnalytics(setBackendConnected);
   }, []);
 
-  // console.info("Backend:", backendConnected);
+  console.info("Backend:", backendConnected);
 
   return (
     <ThemeProvider theme={theme}>
-      <main
-        className="overflow-hidden p-2 w-screen h-screen"
-        style={{
-          backgroundColor: theme.background,
-          color: theme.text,
-          transition: "0.3s ease-in-out",
-        }}
-      >
-        <Navbar theme={theme} themeChanger={handleThemeChange} />
-      </main>
+      <Main>
+        <Navbar themeChanger={handleThemeChange} />
+      </Main>
     </ThemeProvider>
   );
 };
@@ -48,3 +41,13 @@ const getAnalytics = async (backend: (arg: boolean) => void) => {
 };
 
 export default App;
+
+const Main = styled.main`
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
+  transition: 0.2s all ease-in-out;
+  overflow: hidden;
+  padding: 8px;
+  width: 100vw;
+  height: 100vh;
+`;

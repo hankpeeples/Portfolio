@@ -1,8 +1,3 @@
-import {
-  createTheming,
-  type ThemingType,
-} from "@callstack/react-theme-provider";
-
 export type Theme = {
   primary: string;
   accent: string;
@@ -12,7 +7,7 @@ export type Theme = {
   secondary: string;
 };
 
-export const themes: { [key: string]: Theme } = {
+export const themes = {
   default: {
     primary: "#FE4A49",
     accent: "#1B998B",
@@ -30,9 +25,3 @@ export const themes: { [key: string]: Theme } = {
     secondary: "#252525",
   },
 };
-
-const { ThemeProvider, withTheme }: ThemingType<Theme> = createTheming(
-  themes.default,
-);
-
-export { ThemeProvider, withTheme };

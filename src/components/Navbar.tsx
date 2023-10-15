@@ -1,25 +1,56 @@
-import { Theme, themes } from "../theme";
+import styled from "styled-components";
 import ThemeChanger from "./ThemeChanger";
 
 type Props = {
-  theme: Theme;
   themeChanger: VoidFunction;
 };
 
-const Navbar = ({ theme, themeChanger }: Props) => {
+type NavItem = string;
+
+const NavItems: NavItem[] = ["Home", "Projects", "Blog", "Contact"];
+
+const Navbar = ({ themeChanger }: Props) => {
   return (
-    <div
-      className="flex flex-row justify-between items-center p-3 w-full rounded-md shadow-md h-fit"
-      style={{ backgroundColor: theme.background2 }}
-    >
-      Navbar
-      <ThemeChanger
-        theme={theme}
-        themes={themes}
-        onChangeTheme={themeChanger}
-      />
-    </div>
+    <NavbarContainer>
+      <div>
+        <img src="/vite.svg" style={{ height: "1.5rem" }} />
+      </div>
+      {NavItems.map((item, idx) => {
+        return (
+          <NavItemWrapper key={idx}>
+            <p>{item}</p>
+          </NavItemWrapper>
+        );
+      })}
+      <ThemeChanger onChangeTheme={themeChanger} />
+    </NavbarContainer>
   );
 };
 
 export default Navbar;
+
+const NavbarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  font-weight: 600; /* SemiBold */
+  height: fit-content;
+  border-radius: 6px;
+
+  box-shadow: 2px 2px 2px rgb(0 0 0 / 0.3);
+
+  user-select: none;
+  background-color: ${({ theme }) => theme.background2};
+`;
+
+const NavItemWrapper = styled.div`
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+
+  :hover {
+    border-bottom: 1px solid ${({ theme }) => theme.primary};
+  }
+`;

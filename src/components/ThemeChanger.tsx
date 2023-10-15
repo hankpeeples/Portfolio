@@ -1,16 +1,12 @@
-// import { withTheme } from "../theme.ts";
-import type { Theme } from "../theme.ts";
-
 type Props = {
-  theme: Theme;
-  themes: { [key: string]: Theme };
   onChangeTheme: VoidFunction;
 };
 
-const ThemeChanger = ({ theme, themes, onChangeTheme }: Props) => (
-  <div onClick={() => onChangeTheme()}>
-    {theme === themes.dark ? "dark" : "default"}
-  </div>
+const ThemeChanger = ({ onChangeTheme }: Props) => (
+  <div
+    onClick={() => onChangeTheme()}
+    style={{ height: "10px", width: "5px", backgroundColor: "red" }}
+  ></div>
 );
 
 export default ThemeChanger;
